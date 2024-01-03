@@ -26,9 +26,9 @@ document.body.appendChild(addBtn)
 div.append(addBtn)
 
 //---------[ add btn function ]--------//
-addBtn.addEventListener('click', function (){
+addBtn.addEventListener('click', () => {
   const value = input.value;
-  document.getElementById('item').value = ''
+  input.value = ''
 
   console.log(value)
 
@@ -42,7 +42,7 @@ addBtn.addEventListener('click', function (){
   delBtn.textContent ='Delete';
   ul.appendChild(li)
 
-  delBtn.addEventListener('click', function(){
+  delBtn.addEventListener('click', () => {
     ul.removeChild(li)
   });
 
