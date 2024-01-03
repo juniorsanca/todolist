@@ -1,54 +1,40 @@
-/**
- * 
- * 
- */
-function createArticle(post){
-    const article = document.createElement('article');
+const title = document.createElement('h1')
+title.textContent = 'My shopping list'
+document.body.appendChild(title)
 
-    const h2 = document.createElement('h2')
-    h2.innerHTML = post.title;
-    article.appendChild(h2)
+const label = document.createElement('label')
+label.textContent = 'Enter a new item: '
+document.body.appendChild(label)
 
-    const p = document.createElement('p')
-    p.innerHTML = post.body;
-    article.appendChild(p)
-    // article.innerHTML = `
-    // <h2>${post.title}</h2>
-    // <p>${post.body}</p>`
-    return article
-}
+const input = document.createElement('input')
+document.body.appendChild(input)
+input.setAttribute('type', 'text')
+input.setAttribute('id', 'item')
+input.setAttribute('name', 'item')
 
-// function createElementWithText(tagName, content){
-//     const element = document.createElement(tagName)
-//     element.innerText = content
-//     return element
-// }
+const addBtn = document.createElement('button')
+addBtn.textContent = 'Add item'
+document.body.appendChild(addBtn)
 
-async function afficherArticles(){
-    const div = document.querySelector('div');
-    const p = document.createElement('p');
-    p.innerHTML = 'chargement...';
-    div.appendChild(p)
+addBtn.addEventListener('click', function (){
+  const value = input.value;
+  span.textContent = value;
 
-    try {
-      const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5",{
-      method: "GET", // ou 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-      const posts = await response.json();
-    //console.log(posts)
-      p.remove()
-      for(let post of posts){
-        div.appendChild(createArticle(post))
-      }
-    } 
-    catch (erreur) {
-    //   console.error("Erreur :", erreur);
-        p.innerHTML = 'impossible dafficher les articles';
-        p.style.color= 'red'
-    }
-}
 
-afficherArticles();
+  delBtn.textContent = 'Delete';
+  document.getElementById('item').value = ''
+
+  console.log(value)
+})
+
+const ul = document.createElement('ul')
+document.body.appendChild(ul)
+const li = document.createElement('li')
+ul.appendChild(li)
+const span = document.createElement('span')
+li.appendChild(span)
+const delBtn = document.createElement('button')
+li.appendChild(delBtn)
+delBtn.addEventListener('click', function(){
+  li.remove()
+})
