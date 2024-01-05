@@ -25,13 +25,10 @@ addBtn.textContent = 'Add item'
 document.body.appendChild(addBtn)
 div.append(addBtn)
 
-//---------[ add btn function ]--------//
-addBtn.addEventListener('click', () => {
-  const value = input.value;
-  input.value = ''
+const todosArray = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
 
-  console.log(value)
-
+todosArray.forEach(addTask);
+function addTask(value){
   const li = document.createElement('li')
   const span = document.createElement('span')
   const delBtn = document.createElement('button')
@@ -43,10 +40,18 @@ addBtn.addEventListener('click', () => {
   ul.appendChild(li)
 
   delBtn.addEventListener('click', () => {
-    ul.removeChild(li)
+    localStorage.removeItem('todos');
+    ul.removeChild(li);
   });
+}
 
+//---------[ add btn function ]--------//
+addBtn.addEventListener('click', () => {
+  const value = input.value
+  if(value == ''){ preventDefault();}
+  todosArray.push(value);
+  localStorage.setItem('todos', JSON.stringify(todosArray));
+  input.value = '';
+  addTask(value)
   input.focus();
-
 })
-
