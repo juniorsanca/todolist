@@ -1,5 +1,9 @@
+const container = document.createElement('div')
+container.setAttribute('class', 'centered-div')
+document.body.appendChild(container)
+
 const title = document.createElement('h1')
-title.textContent = 'My shopping list'
+title.textContent = 'todo list 🔖'
 document.body.appendChild(title)
 
 const div = document.createElement('div')
@@ -9,7 +13,7 @@ const ul = document.createElement('ul')
 document.body.appendChild(ul)
 
 const label = document.createElement('label')
-label.textContent = 'Enter a new item: '
+label.textContent = 'Ajouter a ma liste : '
 document.body.appendChild(label)
 div.append(label)
 
@@ -18,11 +22,12 @@ document.body.appendChild(input)
 input.setAttribute('type', 'text')
 input.setAttribute('id', 'item')
 input.setAttribute('name', 'item')
-div.append(input)
+div.append(input) 
 
 const addBtn = document.createElement('button')
-addBtn.textContent = 'Add item'
+addBtn.textContent = 'AJOUTER'
 document.body.appendChild(addBtn)
+addBtn.setAttribute('id', 'button')
 div.append(addBtn)
 
 const todosArray = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
@@ -36,7 +41,7 @@ function addTask(value){
   li.appendChild(span);
   span.textContent = value;
   li.appendChild(delBtn);
-  delBtn.textContent ='Delete';
+  delBtn.textContent ='Supprimer';
   ul.appendChild(li)
 
   delBtn.addEventListener('click', () => {
@@ -44,6 +49,8 @@ function addTask(value){
     ul.removeChild(li);
   });
 }
+
+container.append(title, div, ul, label, input, addBtn, ul)
 
 //---------[ add btn function ]--------//
 addBtn.addEventListener('click', () => {

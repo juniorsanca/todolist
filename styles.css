@@ -1,9 +1,23 @@
-.error {
-    background-color: red;
+body {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    height: 100vh; /* Hauteur de la vue (viewport height) */
+    margin: 0;
 }
-.blue {
-    background-color: rgb(21, 0, 255);
+.centered-div {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.attention {
-    background-color: yellow;
+#item{
+    width: 98%;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#button{
+    width: 100%;
+    height: 40px;
 }
